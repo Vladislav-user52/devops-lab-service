@@ -1,4 +1,4 @@
-# DevOps Lab Service
+# DevOpsLab Service
 
 Простой backend-сервис для лабораторной работы.
 
