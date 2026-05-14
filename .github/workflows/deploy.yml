@@ -5,9 +5,10 @@ on:
     branches: [ main, master ]
 
 jobs:
-  # ---- 1. Проверка сборки ----
+  # ---- 1. Проверка сборки и тестирование ----
   build-and-test:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -31,12 +32,16 @@ jobs:
       - name: Stop containers
         run: docker compose down
 
-  # ---- 2. Автодеплой на ВМ ----
+  # ---- 2. Автоматический деплой на ВМ через SSH ----
   deploy:
     runs-on: ubuntu-latest
     needs: build-and-test
     if: success()
+
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
