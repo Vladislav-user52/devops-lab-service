@@ -7,3 +7,4 @@ app = FastAPI()
 setup_metrics(app)
 
 app.include_router(router)
+
