@@ -1,1 +1,28 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: my-app
+    ports:
+      - "8080:8000"
+    restart: unless-stopped
+
+  prometheus:
+    image: docker.io/prom/prometheus:latest
+    container_name: lab4-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus_config/:/etc/prometheus/:z
+    restart: unless-stopped
+
+  grafana:
+    image: docker.io/grafana/grafana:latest
+    container_name: lab4-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    restart: unless-stopped
 # TODO: реализовать
