@@ -8,6 +8,7 @@ tasks = []
 task_id = 0
 
 
+
 @router.get("/")
 def root():
     return {"message": "CI/CD works! Deployed automatically"}
