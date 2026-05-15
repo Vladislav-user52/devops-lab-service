@@ -13,6 +13,7 @@ def root():
     return {"message": "CI/CD works! Deployed automatically"}
 
 
+
 @router.post("/tasks")
 def create_task():
     global task_id
